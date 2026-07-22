@@ -18,7 +18,10 @@ public enum ChildErrorCode implements ErrorCode {
     INVALID_NATIONALITY(
             "CHILD_004",
             "child natiolity is invalid"
-    );
+    ),
+    CHILD_NOT_FOUND(
+            "CHILD_005",
+            "Child not found");
 
     private final String code;
     private final String message;

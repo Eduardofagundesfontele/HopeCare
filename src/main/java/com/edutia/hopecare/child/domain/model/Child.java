@@ -14,7 +14,7 @@ public class Child {
     private long id;
     private String fullName;
     private LocalDate birthDate;
-    private String gender;
+    private Gender gender;
     private String nationality;
 
     private String medicalNotes;
@@ -31,7 +31,7 @@ public class Child {
     public static Child create(
             String fullName,
             LocalDate birthDate,
-            String gender,
+            Gender gender,
             String nationality,
             String medicalNotes,
             String status
@@ -66,7 +66,7 @@ public class Child {
             Long id,
             String fullName,
             LocalDate birthDate,
-            String gender,
+            Gender gender,
             String nationality,
             String medicalNotes,
             String status,
@@ -94,7 +94,7 @@ public class Child {
     // UPDATE
     public void  update(
             String fullName,
-            String gender,
+            Gender gender,
             String nationality,
             String medicalNotes,
             String status
@@ -119,7 +119,7 @@ public class Child {
     private static void validate(
             String fullName,
             LocalDate birthDate,
-            String gender,
+            Gender gender,
             String nationality
     ){
         if (fullName == null || fullName.isBlank()) {
@@ -130,7 +130,7 @@ public class Child {
             throw new DomainException(ChildErrorCode.INVALID_BIRTH_DATE);
         }
 
-        if (gender == null || gender.isBlank()) {
+        if (gender == null) {
             throw new DomainException(ChildErrorCode.INVALID_GENDER);
         }
 

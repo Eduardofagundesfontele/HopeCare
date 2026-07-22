@@ -3,18 +3,18 @@ package com.edutia.hopecare.child.application.usecase;
 import com.edutia.hopecare.child.domain.model.Child;
 import com.edutia.hopecare.child.domain.repository.ChildRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-public class CreateChildUseCase {
+public class FindAllChildUseCase {
 
     private final ChildRepository repository;
 
-    public Child execute(Child child){
+    public Page<Child> execute(Pageable pageable){
 
-        return repository.save(child);
+        return repository.findAll(pageable);
     }
 }
