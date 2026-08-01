@@ -1,8 +1,8 @@
 package com.edutia.hopecare.staff.domain.model;
 
-import com.edutia.hopecare.donation.domain.exception.DonationErroCode;
+
 import com.edutia.hopecare.shared.exception.DomainException;
-import com.edutia.hopecare.staff.domain.exception.StaffErroCode;
+import com.edutia.hopecare.staff.domain.exception.StaffErrorCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -93,13 +93,13 @@ public class Staff {
             String email,
             StaffRole staffRole){
         if(name == null || name.isBlank()){
-            throw new DomainException(StaffErroCode.INVALID_NAME);
+            throw new DomainException(StaffErrorCode.INVALID_NAME);
         }
         if(email == null || email.isBlank()){
-            throw new DomainException(StaffErroCode.INVALID_EMAIL);
+            throw new DomainException(StaffErrorCode.INVALID_EMAIL);
         }
         if (staffRole == null){
-            throw new DomainException(StaffErroCode.INVALID_ROLE);
+            throw new DomainException(StaffErrorCode.INVALID_ROLE);
         }
     }
 

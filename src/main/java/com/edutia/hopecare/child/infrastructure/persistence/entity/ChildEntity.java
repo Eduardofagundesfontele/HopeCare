@@ -49,6 +49,16 @@ public class ChildEntity {
     @Column(name = "deleted",nullable = false)
     private Boolean deleted = false;
 
+    @PrePersist
+    protected void onCreate(){
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        updatedAt = LocalDateTime.now();
+    }
+
 
 
 

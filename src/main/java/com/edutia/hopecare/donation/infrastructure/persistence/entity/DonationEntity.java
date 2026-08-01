@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "children")
+@Table(name = "Donations")
 @Getter
 @Setter
 public class DonationEntity {
@@ -26,7 +26,7 @@ public class DonationEntity {
     @Column(name = "donor_email",nullable = false)
     private String donorEmail;
 
-    @Column(name = "donor_Phone",nullable = false)
+    @Column(name = "donor_phone",nullable = false)
     private String donorPhone;
 
     @Enumerated(EnumType.STRING)
@@ -47,5 +47,15 @@ public class DonationEntity {
 
     @Column(name = "update_at")
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate(){
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        updatedAt = LocalDateTime.now();
+    }
 
 }

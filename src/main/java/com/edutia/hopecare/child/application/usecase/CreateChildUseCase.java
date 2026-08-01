@@ -5,8 +5,6 @@ import com.edutia.hopecare.child.domain.repository.ChildRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-
 @Service
 @RequiredArgsConstructor
 public class CreateChildUseCase {
