@@ -10,5 +10,21 @@ public interface StaffPersistenceMapper {
 
     StaffEntity toEntity(Staff staff);
 
-    Staff toDomain(StaffEntity entity);
+    default Staff  toDomain(StaffEntity entity){
+
+        if (entity == null){
+            return null;
+        }
+
+        return Staff.reconstruct(
+                entity.getId(),
+                entity.getName(),
+                entity.getEmail(),
+                entity.getPhoneNumber(),
+                entity.getStaffRole(),
+                entity.getHireDate(),
+                entity.getCreatedAt(),
+                entity.getUpdatedAt()
+        );
+    }
 }

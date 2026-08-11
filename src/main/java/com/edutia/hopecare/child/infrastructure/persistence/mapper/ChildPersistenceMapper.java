@@ -9,5 +9,22 @@ public interface ChildPersistenceMapper  {
 
     ChildEntity toEntity(Child child);
 
-    Child toDomain(ChildEntity entity);
+   default Child toDomain (ChildEntity entity){
+
+       if (entity == null) {
+           return null;
+       }
+       return Child.reconstruct(
+               entity.getId(),
+               entity.getFullName(),
+               entity.getBirthDate(),
+               entity.getGender(),
+               entity.getNationality(),
+               entity.getMedicalNotes(),
+               entity.getStatus(),
+               entity.getAdmissionDate(),
+               entity.getCreatedAt(),
+               entity.getUpdatedAt()
+       );
+   }
 }

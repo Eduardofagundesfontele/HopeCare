@@ -25,7 +25,7 @@ public class Child {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private Child(){}
+    protected Child(){}
 
     // CREATE (NEW CHILD)
     public static Child create(

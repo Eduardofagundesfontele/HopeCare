@@ -13,9 +13,20 @@ public class UpdateStaffUseCase {
 
     private final StaffRepository repository;
 
-    public Staff execute(Long id){
+    public Staff execute(Long id,Staff updated){
 
-        return repository.findById(id)
+        Staff staff =  repository.findById(id)
                 .orElseThrow(()-> new DomainException(StaffErrorCode.STAFF_NOT_FOUND));
+
+        staff.update(
+                updated.getName(),
+                updated.getEmail(),
+                updated.getPhoneNumber(),
+                updated.getStaffRole()
+        );
+        return repository.save(staff);
+
+
     }
+
 }

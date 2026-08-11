@@ -11,5 +11,22 @@ public interface DonationPersistenceMapper {
 
     DonationEntity toEntity(Donation donation);
 
-    Donation toDonation(DonationEntity DonationEntity);
+   default Donation toDonation(DonationEntity entity){
+       if (entity == null) {
+           return null;
+       }
+       return Donation.reconstruct(
+               entity.getId(),
+               entity.getDonorName(),
+               entity.getDonorEmail(),
+               entity.getDonorPhone(),
+               entity.getType(),
+               entity.getAmount(),
+               entity.getDescription(),
+               entity.getStatus(),
+               entity.getDonationDate(),
+               entity.getCreatedAt(),
+               entity.getUpdatedAt()
+       );
+   }
 }

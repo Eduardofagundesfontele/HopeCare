@@ -21,6 +21,8 @@ public class Staff {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    protected Staff(){};
+
     //CREATE
         public static Staff create(
                 Long id,
@@ -58,6 +60,8 @@ public class Staff {
              LocalDateTime updatedAt
     ){
         Staff staff = new Staff();
+
+         staff.id = id;
          staff.name = name;
          staff.email = email;
          staff.phoneNumber = phoneNumber;

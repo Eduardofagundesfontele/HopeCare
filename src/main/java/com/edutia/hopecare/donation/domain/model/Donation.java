@@ -1,6 +1,7 @@
 package com.edutia.hopecare.donation.domain.model;
 
-import com.edutia.hopecare.donation.domain.exception.DonationErroCode;
+
+import com.edutia.hopecare.donation.domain.exception.DonationErrorCode;
 import com.edutia.hopecare.shared.exception.DomainException;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +25,7 @@ public class Donation {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private Donation(){};
+    protected Donation(){};
 
     //CREATE
     public static Donation create(
@@ -86,6 +87,8 @@ public class Donation {
         donation.donationDate = donationDate;
         donation.createdAt = createdAt;
         donation.updatedAt = updatedAt;
+
+        return donation;
     }
 
     //UPDATE
@@ -115,13 +118,13 @@ public class Donation {
 
     ){
         if(donorName == null || donorName.isBlank()){
-            throw new DomainException(DonationErroCode.INVALID_NAME);
+            throw new DomainException(DonationErrorCode.INVALID_NAME);
         }
         if(donorEmail == null || donorEmail.isBlank()){
-            throw new DomainException(DonationErroCode.INVALID_EMAIL);
+            throw new DomainException(DonationErrorCode.INVALID_EMAIL);
         }
         if (donationType == null){
-            throw new DomainException(DonationErroCode.INVALID_TYPE);
+            throw new DomainException(DonationErrorCode.INVALID_TYPE);
         }
     }
 

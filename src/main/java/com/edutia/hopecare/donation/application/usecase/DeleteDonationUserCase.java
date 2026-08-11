@@ -1,6 +1,6 @@
 package com.edutia.hopecare.donation.application.usecase;
 
-import com.edutia.hopecare.donation.domain.exception.DonationErroCode;
+import com.edutia.hopecare.donation.domain.exception.DonationErrorCode;
 import com.edutia.hopecare.donation.domain.repository.DonationRepository;
 import com.edutia.hopecare.shared.exception.DomainException;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class DeleteDonationUserCase {
     public void execute(Long id){
 
         repository.findById(id)
-                .orElseThrow(()->new DomainException(DonationErroCode.DONATION_NOT_FOUND));
+                .orElseThrow(()->new DomainException(DonationErrorCode.DONATION_NOT_FOUND));
 
         repository.deleteById(id);
     }

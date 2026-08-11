@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Donations")
+@Table(name = "donations")
 @Getter
 @Setter
 public class DonationEntity {
@@ -45,7 +45,7 @@ public class DonationEntity {
     @Column(name = "created_at",nullable = false,updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @PrePersist
