@@ -46,7 +46,7 @@ public class DonationController {
     @PutMapping("/{id}")
     public ResponseEntity<DonationResponse> updateDonation(@PathVariable Long id,@Valid @RequestBody UpdateDonationRequest request){
 
-        final var donation = updateDonationUseCase.execute(id,presentationMapper.toDomainUpdate(request));
+        final var donation = updateDonationUseCase.execute(id,presentationMapper.updateDomain(id,request);
 
         return ResponseEntity.ok(presentationMapper.toResponse(donation));
     }

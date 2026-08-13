@@ -7,9 +7,37 @@ import com.edutia.hopecare.staff.presentation.dto.response.StaffResponse;
 
 public interface StaffPresentationMapper {
 
-    Staff toDomain(CreateStaffRequest request);
+    default Staff toDomain(CreateStaffRequest request) {
 
-    Staff toDomainUpdate(UpdateStaffRequest request);
+        if (request == null) {
+            return null;
+        }
+
+        return Staff.create(
+                request.name(),
+                request.email(),
+                request.phoneNumber(),
+                request.staffRole(),
+                request.hireDate()
+        );
+    }
+    default void updateDomain(
+            Staff staff,
+            UpdateStaffRequest request
+    ) {
+
+        if (request == null) {
+            return;
+        }
+
+        staff.update(
+                request.name(),
+                request.email(),
+                request.phoneNumber(),
+                request.staffRole()
+        );
+    }
+
 
     StaffResponse toResponse(Staff staff);
 }

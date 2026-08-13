@@ -25,7 +25,6 @@ public class Staff {
 
     //CREATE
         public static Staff create(
-                Long id,
                 String name,
                 String email,
                 String phoneNumber,

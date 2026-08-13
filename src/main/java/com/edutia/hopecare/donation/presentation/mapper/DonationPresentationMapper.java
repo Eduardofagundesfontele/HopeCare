@@ -7,12 +7,42 @@ import com.edutia.hopecare.donation.domain.model.Donation;
 import com.edutia.hopecare.donation.presentation.dto.request.CreateDonationRequest;
 import com.edutia.hopecare.donation.presentation.dto.request.UpdateDonationRequest;
 import com.edutia.hopecare.donation.presentation.dto.response.DonationResponse;
+import org.mapstruct.Mapper;
 
+@Mapper(componentModel = "spring")
 public interface DonationPresentationMapper {
 
-    Donation toDomain (CreateDonationRequest request);
+    default Donation toDomain(CreateDonationRequest request) {
 
-    Donation toDomainUpdate(UpdateDonationRequest request);
+        if (request == null) {
+            return null;
+        }
+
+        return Donation.create(
+                request.donorName(),
+                request.donorEmail(),
+                request.donorPhone(),
+                request.type(),
+                request.description(),
+                request.status()
+        );
+    }
+    default void updateDomain(
+            Donation donation,
+            UpdateDonationRequest request
+    ) {
+
+        if (request == null) {
+            return;
+        }
+
+        donation.update(
+                request.donorName(),
+                request.donorEmail(),
+                request.donorPhone(),
+                request.description()
+        );
+    }
 
     DonationResponse toResponse(Donation donation);
 }
