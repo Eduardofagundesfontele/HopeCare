@@ -3,6 +3,7 @@ package com.edutia.hopecare.donation.presentation.mapper;
 import com.edutia.hopecare.child.domain.model.Child;
 import com.edutia.hopecare.child.presentation.dto.request.UpdateChildRequest;
 import com.edutia.hopecare.child.presentation.dto.response.ChildResponse;
+import com.edutia.hopecare.donation.application.command.UpdateDonationCommand;
 import com.edutia.hopecare.donation.domain.model.Donation;
 import com.edutia.hopecare.donation.presentation.dto.request.CreateDonationRequest;
 import com.edutia.hopecare.donation.presentation.dto.request.UpdateDonationRequest;
@@ -27,16 +28,13 @@ public interface DonationPresentationMapper {
                 request.status()
         );
     }
-    default void updateDomain(
-            Donation donation,
-            UpdateDonationRequest request
-    ) {
+    default UpdateDonationCommand toCommand(UpdateDonationRequest request) {
 
         if (request == null) {
-            return;
+            return null;
         }
 
-        donation.update(
+        return new UpdateDonationCommand(
                 request.donorName(),
                 request.donorEmail(),
                 request.donorPhone(),

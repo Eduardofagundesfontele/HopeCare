@@ -1,6 +1,7 @@
 package com.edutia.hopecare.donation.application.usecase;
 
 
+import com.edutia.hopecare.donation.application.command.UpdateDonationCommand;
 import com.edutia.hopecare.donation.domain.exception.DonationErrorCode;
 import com.edutia.hopecare.donation.domain.model.Donation;
 import com.edutia.hopecare.donation.domain.repository.DonationRepository;
@@ -14,15 +15,15 @@ public class UpdateDonationUseCase {
 
     private final DonationRepository repository;
 
-    public Donation execute(Long id,Donation updated){
+    public Donation execute(Long id, UpdateDonationCommand updated){
         Donation donation = repository.findById(id)
                 .orElseThrow(()->new DomainException(DonationErrorCode.DONATION_NOT_FOUND));
 
         donation.update(
-                updated.getDonorName(),
-                updated.getDonorEmail(),
-                updated.getDonorPhone(),
-                updated.getDescription()
+                updated.donorName(),
+                updated.donorEmail(),
+                updated.donorPhone(),
+                updated.description()
         );
 
         return repository.save(donation);
